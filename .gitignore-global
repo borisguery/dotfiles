@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.generators
+.rakeTasks
+
+
+# OSX
+*.DS_Store
+__MACOSX/*
+
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
