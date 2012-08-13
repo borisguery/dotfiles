@@ -1,9 +1,10 @@
-# IntelliJ IDEA
+# IntelliJ IDEA / Phpstorm
 *.iml
 *.ipr
 *.iws
 .generators
 .rakeTasks
+.idea
 
 
 # OSX
