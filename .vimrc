@@ -15,9 +15,10 @@ Bundle 'leshill/vim-json'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'wincent/Command-T.git'
+Bundle 'wincent/Command-T.git'   " Command-T requires manual installation to enable C Extension
 let g:CommandTMatchWindowAtTop=1 " show window at top
 
+Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'fholgado/minibufexpl.vim'
 
 " Automatically detect file types. (must turn on after Vundle)
@@ -43,6 +44,8 @@ set history=500
 set showmode 
 set backspace=indent,eol,start
 
+set showcmd
+
 set wildmenu
 set wildmode=list:longest,full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
@@ -62,3 +65,5 @@ set clipboard+=unnamed
 
 let $GIT_SSL_NO_VERIFY = 'true' " Accept invalid or missing SSL certificate
 let g:Powerline_symbols = 'fancy'
+set t_Co=256
+

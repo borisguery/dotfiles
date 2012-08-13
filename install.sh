@@ -73,5 +73,15 @@ cp /tmp/zyo/z.1 "$PREFIX/man/man1/"
 rm -fdr /tmp/zyo
 source "$PREFIX/bin/z"
 
-# install latest composer
+# Install Composer
+echo "Installing Composer"
 curl -s https://getcomposer.org/installer | php -- --install-dir="$PREFIX/bin"
+# I suck at bash (actually I suck at ruby too :))
+SYMLINK=$(ruby -e "puts File.expand_path('$PREFIX/bin/composer.phar')")
+ln -s "$SYMLINK" "$PREFIX/bin/composer" 
+
+# Install php-cs-fixer
+echo "Installing php-cs-fixer..."
+curl -s http://cs.sensiolabs.org/get/php-cs-fixer.phar -o "$PREFIX/bin/php-cs-fixer"
+chmod a+x $PREFIX/bin/php-cs-fixer
+
