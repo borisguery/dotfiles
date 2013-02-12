@@ -1,7 +1,7 @@
 [core]
     editor = vim
 [user]
-	name = Boris Guéry 
+    name = Boris Guéry 
     email = guery.b@gmail.com
 [color]
     ui = auto
@@ -26,3 +26,8 @@
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore
 
+[diff]
+    noprefix = true
+
+[alias]
+    logg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order
