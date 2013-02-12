@@ -15,11 +15,12 @@ Bundle 'leshill/vim-json'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'wincent/Command-T.git'   " Command-T requires manual installation to enable C Extension
+Bundle 'wincent/Command-T.git'
 let g:CommandTMatchWindowAtTop=1 " show window at top
 
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'fholgado/minibufexpl.vim'
+Bundle 'smerrill/vcl-vim-plugin'
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
