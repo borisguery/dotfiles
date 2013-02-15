@@ -21,6 +21,8 @@ let g:CommandTMatchWindowAtTop=1 " show window at top
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'smerrill/vcl-vim-plugin'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'https://github.com/beyondwords/vim-twig.git'
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
