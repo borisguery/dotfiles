@@ -76,6 +76,7 @@ source "$PREFIX/bin/z"
 # Install Composer
 echo "Installing Composer"
 curl -s https://getcomposer.org/installer | php -- --install-dir="$PREFIX/bin"
+
 # I suck at bash (actually I suck at ruby too :))
 SYMLINK=$(ruby -e "puts File.expand_path('$PREFIX/bin/composer.phar')")
 ln -s "$SYMLINK" "$PREFIX/bin/composer" 
