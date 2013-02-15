@@ -70,3 +70,47 @@ let $GIT_SSL_NO_VERIFY = 'true' " Accept invalid or missing SSL certificate
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
 
+" Restore cursor position
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
+
+if has("folding")
+    function! UnfoldCur()
+        if !&foldenable
+            return
+        endif
+        let cl = line(".")
+        if cl <= 1
+            return
+        endif
+        let cf  = foldlevel(cl)
+        let uf  = foldlevel(cl - 1)
+        let min = (cf > uf ? uf : cf)
+        if min
+            execute "normal!" min . "zo"
+            return 1
+        endif
+    endfunction
+endif
+
+augroup resCur
+    autocmd!
+    if has("folding")
+        autocmd BufWinEnter * if ResCur() | call UnfoldCur() | endif
+    else
+        autocmd BufWinEnter * call ResCur()
+    endif
+augroup END
+" END Restore cursor position
+
+set cursorline
+
