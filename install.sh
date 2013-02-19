@@ -2,7 +2,7 @@
 
 # Create directories
 
-PREFIX='~'
+PREFIX="$HOME"
 DIRS=( backup bin man .vim/bundle/vundle )
 BACKUP_DIR="backup"
 
