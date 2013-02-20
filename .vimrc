@@ -56,6 +56,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 set laststatus=2
 
+set spelllang=en,fr
+
 filetype plugin indent on
 
 set wig=*.o,*.obj,*~,#*#,*.pyc,*.tar*,*.avi,*.ogg,*.mp3
