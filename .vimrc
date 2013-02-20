@@ -56,11 +56,6 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 set laststatus=2
 
-set statusline=%<%f\          " custom statusline
-set stl+=[%{&ff}]             " show fileformat
-set stl+=%y%m%r%=
-set stl+=%-14.(%l,%c%V%)\ %P
-
 filetype plugin indent on
 
 set wig=*.o,*.obj,*~,#*#,*.pyc,*.tar*,*.avi,*.ogg,*.mp3
