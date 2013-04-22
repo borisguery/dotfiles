@@ -12,17 +12,30 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'wincent/Command-T.git'
-let g:CommandTMatchWindowAtTop=1 " show window at top
-
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'fholgado/minibufexpl.vim'
+" Bundle 'itspriddle/vim-jquery'
+" Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'smerrill/vcl-vim-plugin'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/nerdtree'
+" Always open NERDTree
+autocmd VimEnter * NERDTree
+" Make sure the focus is not in NERDTree
+autocmd VimEnter * wincmd p
+" Autoquit NERDTree if it the last single opened buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'https://github.com/beyondwords/vim-twig.git'
+
+" Bundle 'fholgado/minibufexpl.vim'
+" Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'scrooloose/nerdcommenter'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'wincent/Command-T.git'
+" let g:CommandTMatchWindowAtTop=1 " show window at top
+" set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+
+let mapleader = ","
+nnoremap ' `
+nnoremap ` '
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
@@ -42,12 +55,16 @@ set smartcase                  " be case sensitive when input has a capital lett
 set incsearch                  " show matches while typing
 set showmatch
 set gdefault 
-highlight LineNr ctermfg=Grey
 set history=500
 set showmode 
 set backspace=indent,eol,start
 
 set showcmd
+
+set title " Sets terminal name to filename
+set visualbell
+
+set scrolloff=3
 
 set wildmenu
 set wildmode=list:longest,full
@@ -122,6 +139,18 @@ hi MoreMsg       term=bold ctermfg=10 gui=bold guifg=SeaGreen4
 hi ModeMsg       term=bold cterm=bold gui=bold
 hi LineNr        term=underline ctermfg=14 guifg=#552A7B guibg=Grey5
 hi CursorLineNr  term=bold ctermfg=14 gui=bold guifg=Yellow
+hi Pmenu         ctermfg=0 ctermbg=3 
+hi PmenuSel      ctermfg=0 ctermbg=7
+hi SpecialKey    term=bold ctermfg=9 guifg=Blue
+hi NonText       term=bold ctermfg=9 gui=bold guifg=Blue
+hi Directory     term=bold ctermfg=11 guifg=#1600FF
+hi ErrorMsg      term=standout ctermfg=15 ctermbg=4 guifg=White guibg=Firebrick2
+hi IncSearch     term=reverse cterm=reverse gui=reverse
+hi Search        term=reverse ctermfg=0 ctermbg=14 guibg=Blue4
+hi MoreMsg       term=bold ctermfg=10 gui=bold guifg=SeaGreen4
+hi ModeMsg       term=bold cterm=bold gui=bold
+hi LineNr        term=underline ctermfg=14 guifg=#552A7B guibg=Grey5
+hi CursorLineNr  term=bold ctermfg=14 gui=bold guifg=Yellow
 hi Question      term=standout ctermfg=10 gui=bold guifg=Chartreuse4
 hi StatusLine    term=bold,reverse cterm=bold,reverse guifg=White guibg=DarkSlateGray
 hi StatusLineNC  term=reverse cterm=reverse guifg=SlateGray guibg=Gray90
@@ -178,18 +207,6 @@ hi link Function        Identifier
 hi link Conditional     Statement
 hi link Repeat          Statement
 hi link Label           Statement
-hi link Operator        Statement
-hi link Keyword         Statement
-hi link Exception       Statement
-hi link Include         PreProc
-hi link Define          PreProc
-hi link Macro           PreProc
-hi link PreCondit       PreProc
-hi link StorageClass    Type
-hi link Structure       Type
-hi link Typedef         Type
-hi link Tag             Special
-hi link SpecialChar     Special
 hi link Delimiter       Special
 hi link SpecialComment  Special
 hi link Debug           Special
