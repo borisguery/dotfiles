@@ -17,8 +17,13 @@ Bundle 'leshill/vim-json'
 Bundle 'peterhoeg/vim-qml'
 " Bundle 'itspriddle/vim-jquery'
 " Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'smerrill/vcl-vim-plugin'
-Bundle 'scrooloose/nerdtree'
+Bundle "smerrill/vcl-vim-plugin"
+Bundle "scrooloose/nerdtree"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/vim-snippets"
+Bundle "Bgarbas/vim-snipmate"
+
 " Always open NERDTree
 autocmd VimEnter * NERDTree
 " Make sure the focus is not in NERDTree
@@ -39,6 +44,8 @@ Bundle 'https://github.com/beyondwords/vim-twig.git'
 let mapleader = ","
 nnoremap ' `
 nnoremap ` '
+
+map <C-n> :NERDTreeToggle<CR>
 
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
