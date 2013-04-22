@@ -1,6 +1,8 @@
+set shortmess +=I       " disable the splashscreen
 set nocompatible        " be iMproved
 filetype on             " hack for osx
 filetype off            " required for vundle
+set undofile
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -83,6 +85,9 @@ set clipboard+=unnamed
 let $GIT_SSL_NO_VERIFY = 'true' " Accept invalid or missing SSL certificate
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
+
+" "sudo" save:
+:cmap w!! w !sudo tee % >/dev/null
 
 " Restore cursor position
 function! ResCur()
@@ -207,6 +212,18 @@ hi link Function        Identifier
 hi link Conditional     Statement
 hi link Repeat          Statement
 hi link Label           Statement
+hi link Operator        Statement
+hi link Keyword         Statement
+hi link Exception       Statement
+hi link Include         PreProc
+hi link Define          PreProc
+hi link Macro           PreProc
+hi link PreCondit       PreProc
+hi link StorageClass    Type
+hi link Structure       Type
+hi link Typedef         Type
+hi link Tag             Special
+hi link SpecialChar     Special
 hi link Delimiter       Special
 hi link SpecialComment  Special
 hi link Debug           Special
