@@ -98,6 +98,8 @@ autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 " Autoquit NERDTree if it the last single opened buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+map <C-n> :NERDTreeToggle<CR>
 " }
 
 " YCM {
