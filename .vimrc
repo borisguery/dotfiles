@@ -12,33 +12,23 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
+
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
 Bundle 'peterhoeg/vim-qml'
-" Bundle 'itspriddle/vim-jquery'
-" Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'smerrill/vcl-vim-plugin'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'https://github.com/beyondwords/vim-twig.git'
-
 Bundle 'tpope/vim-surround'
-
 Bundle 'Townk/vim-autoclose'
 Bundle 'StanAngeloff/php.vim'
-
 Bundle 'SirVer/ultisnips'
-
 Bundle 'scrooloose/syntastic'
 
-" Bundle 'fholgado/minibufexpl.vim'
-" Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'scrooloose/nerdcommenter'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'wincent/Command-T.git'
-" let g:CommandTMatchWindowAtTop=1 " show window at top
-" set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 let mapleader = ","
 nnoremap ' `
@@ -85,7 +75,9 @@ set spelllang=en,fr
 filetype plugin indent on
 
 set wig=*.o,*.obj,*~,#*#,*.pyc,*.tar*,*.avi,*.ogg,*.mp3
-set clipboard+=unnamed
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 let $GIT_SSL_NO_VERIFY = 'true' " Accept invalid or missing SSL certificate
 let g:Powerline_symbols = 'fancy'
@@ -93,11 +85,11 @@ set t_Co=256
 
 " NERDTree {
 " Always open NERDTree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " Make sure the focus is not in NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 " Autoquit NERDTree if it the last single opened buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map <C-n> :NERDTreeToggle<CR>
 " }
