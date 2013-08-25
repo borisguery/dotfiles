@@ -1,0 +1,20 @@
+" Small fix to use another clipboard register to make it work inside tmux
+if has ('x') && has ('gui') " On Linux use + register for copy-paste
+    set clipboard=unnamedplus
+elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+    if $TMUX == ''
+        set clipboard+=unnamed
+    else
+        set clipboard=
+    endif
+endif
+
+" Disable folding
+set nofoldenable
+" PIV {
+    let g:DisableAutoPHPFolding = 1
+" }
+
+
+" Do not show indent guides
+let g:indent_guides_enable_on_vim_startup = 0
