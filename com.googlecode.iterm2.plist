@@ -2211,6 +2211,13 @@
 					<key>Text</key>
 					<string>0xd</string>
 				</dict>
+				<key>0x30-0x200000</key>
+				<dict>
+					<key>Action</key>
+					<integer>12</integer>
+					<key>Text</key>
+					<string>0</string>
+				</dict>
 				<key>0x31-0x200000</key>
 				<dict>
 					<key>Action</key>
@@ -2461,7 +2468,7 @@
 					<key>Action</key>
 					<integer>11</integer>
 					<key>Text</key>
-					<string>0x01 0x6E</string>
+					<string>0x01 0x70</string>
 				</dict>
 				<key>0xf702-0x380000</key>
 				<dict>
@@ -2503,7 +2510,7 @@
 					<key>Action</key>
 					<integer>11</integer>
 					<key>Text</key>
-					<string>0x01 0x70</string>
+					<string>0x01 0x6E</string>
 				</dict>
 				<key>0xf703-0x380000</key>
 				<dict>
@@ -2877,7 +2884,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-08-26T06:59:50Z</date>
+	<date>2013-08-26T11:28:38Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
