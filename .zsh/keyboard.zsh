@@ -39,3 +39,6 @@ function zle-line-finish () {
 zle -N zle-line-init
 zle -N zle-line-finish
 
+bindkey "^[[5~" history-beginning-search-backward
+bindkey "^[[6~" history-beginning-search-forward
+
