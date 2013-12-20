@@ -7,8 +7,8 @@ bindkey -v
 # to add other keys to this hash, see: man 5 terminfo
 typeset -A key
 
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
+key[Home]="\e[1~"
+key[End]="\e[4~"
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
 key[Up]=${terminfo[kcuu1]}
