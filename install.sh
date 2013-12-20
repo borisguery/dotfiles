@@ -59,30 +59,3 @@ fi
 cp ./.vimrc "$PREFIX/"
 vim +BundleInstall +qall
 
-
-# z is the new j, yo :) (autojump alternative)
-echo "Fetching z (autojump alternative)..."
-git clone git://github.com/rupa/z.git /tmp/zyo
-echo "Installing z..."
-cp /tmp/zyo/z.sh "$PREFIX/bin/z"
-chmod +x "$PREFIX/bin/z"
-if [ ! -d "$PREFIX/man/man1" ]; then
-    mkdir "$PREFIX/man/man1"
-fi
-cp /tmp/zyo/z.1 "$PREFIX/man/man1/"
-rm -fdr /tmp/zyo
-source "$PREFIX/bin/z"
-
-# Install Composer
-echo "Installing Composer"
-curl -s https://getcomposer.org/installer | php -- --install-dir="$PREFIX/bin"
-
-# I suck at bash (actually I suck at ruby too :))
-SYMLINK=$(ruby -e "puts File.expand_path('$PREFIX/bin/composer.phar')")
-ln -s "$SYMLINK" "$PREFIX/bin/composer" 
-
-# Install php-cs-fixer
-echo "Installing php-cs-fixer..."
-curl -s http://cs.sensiolabs.org/get/php-cs-fixer.phar -o "$PREFIX/bin/php-cs-fixer"
-chmod a+x $PREFIX/bin/php-cs-fixer
-

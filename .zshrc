@@ -28,7 +28,7 @@ ZSH_THEME="bgy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git git-extras brew composer last-working-dir osx per-directory-history vagrant rvm)
+plugins=(autojump git git-extras brew compleat composer last-working-dir osx per-directory-history vagrant rvm)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/completions.zsh
