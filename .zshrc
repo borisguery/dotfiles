@@ -28,7 +28,7 @@ ZSH_THEME="bgy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git git-extras brew composer last-working-dir osx per-directory-history vagrant)
+plugins=(autojump git git-extras brew composer last-working-dir osx per-directory-history vagrant rvm)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/completions.zsh
@@ -45,6 +45,10 @@ source ~/.zsh/misc.zsh
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # Customize to your needs...
-export PATH=~/bin:$(brew --prefix vim)/bin:$(brew --prefix josegonzalez/php/php54)/bin:/usr/local/share/npm/bin/:~/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export ANDROID_SDK=/usr/local/Cellar/android-sdk/r21.1
-export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r21.1
+export PATH=~/bin:$(brew --prefix vim)/bin:$(brew --prefix josegonzalez/php/php54)/bin:/usr/local/share/npm/bin/:~/Library/Python/2.7/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export ANDROID_SDK=/usr/local/Cellar/android-sdk/r22.3
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r22.3
+PATH=/usr/local/share/npm/bin/:$PATH
+PATH=/usr/local/share/python/:$PATH
