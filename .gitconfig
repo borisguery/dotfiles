@@ -1,11 +1,11 @@
 [core]
     editor = "vim"
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    excludesfile = /Users/bguery/.gitignore_global
+    excludesfile = /Users/bguery/.gitignore-global
 
 [user]
-	name = Boris Guéry
-	email = guery.b@gmail.com
+    name = Boris Guéry
+    email = guery.b@gmail.com
 
 [color]
     ui = auto
@@ -29,6 +29,7 @@
 
 [alias]
     logg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order
+    all-yesterday = log --graph --all --since="day.before.yesterday.midnight" --until=midnight --author="$(git config user.name)" --oneline
 
 [push]
-	default = simple
+    default = simple
