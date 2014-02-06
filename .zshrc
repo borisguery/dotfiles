@@ -52,3 +52,5 @@ export ANDROID_SDK=/usr/local/Cellar/android-sdk/r22.3
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r22.3
 PATH=/usr/local/share/npm/bin/:$PATH
 PATH=/usr/local/share/python/:$PATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
