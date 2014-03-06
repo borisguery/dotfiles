@@ -22,10 +22,22 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:airline_powerline_fonts = 1
 
 " Disable up/down/left/right arrows
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Disable h and move navigation to right (more natural imo)
+noremap h <nop>
+noremap m l
+noremap l k
+noremap k j
+noremap j h
 
 " YAML should use two spaces for indentation
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
