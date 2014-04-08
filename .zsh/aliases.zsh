@@ -8,3 +8,6 @@ alias rm="rmtrash"
 alias vi="vim"
 
 alias cat="pygmentize -g"
+
+alias ghist="history | grep "
+alias gh="ghist"
