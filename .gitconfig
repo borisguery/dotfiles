@@ -11,25 +11,36 @@
     ui = auto
   [color "branch"]
     current = yellow reverse
-    local = yellow
-    remote = green
+    local   = yellow
+    remote  = green
   [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+    meta       = yellow bold
+    frag       = magenta bold
+    old        = red bold
+    new        = green bold
     whitespace = red reverse
   [color "status"]
-    added = yellow
-    changed = green
+    added     = yellow
+    changed   = green
     untracked = cyan
 
 [diff]
-    noprefix = true
+    noprefix  = true
+    wordRegex = .
 
 [alias]
     logg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order
     all-yesterday = log --graph --all --since="day.before.yesterday.midnight" --until=midnight --author="$(git config user.name)" --oneline
+    st = status
+    ci = commit
+    ap = add -p
+    rp = reset -p
+    cp = checkout -p
+
+[status]
+    submoduleSummary = true
 
 [push]
     default = simple
+[log]
+    abbrevCommit = true
