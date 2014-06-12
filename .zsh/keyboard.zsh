@@ -44,4 +44,4 @@ bindkey "^[[5~" history-beginning-search-backward
 # Page down
 bindkey "^[[6~" history-beginning-search-forward
 
-bindkey '^r' history-incremental-search-backward
+bindkey '^r' history-beginning-search-backward
