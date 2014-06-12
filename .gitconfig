@@ -36,6 +36,7 @@
     ap = add -p
     rp = reset -p
     cp = checkout -p
+    show-deleted = !sh -c 'git show $(git rev-list --max-count=1 --all -- $0)^:$0'
 
 [status]
     submoduleSummary = true
