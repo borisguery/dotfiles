@@ -1,11 +1,12 @@
 [core]
     editor = "vim"
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    excludesfile = /Users/bguery/.gitignore_global
+	excludesfile = /Users/bguery/.gitignore_global
 
 [user]
-    name = Boris Guéry
-    email = guery.b@gmail.com
+	name = Boris Guéry
+	email = guery.b@gmail.com
+	signingkey = 034C6265
 
 [color]
     ui = auto
@@ -37,6 +38,7 @@
     rp = reset -p
     cp = checkout -p
     show-deleted = !sh -c 'git show $(git rev-list --max-count=1 --all -- $0)^:$0'
+    publish = push --set-upstream origin
 
 [status]
     submoduleSummary = true
@@ -45,3 +47,18 @@
     default = simple
 [log]
     abbrevCommit = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[rerere]
+	enabled = true
+[gpg]
+	program = gpg2
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

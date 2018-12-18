@@ -1,56 +1,85 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="bgy"
+export PATH=~/.rvm/bin:~/.composer/vendor/bin:~/bin:$PATH
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+export EDITOR=vim
+export DAYUSE_DEPLOY_USER=borisguery
 
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git git-extras brew compleat composer last-working-dir osx per-directory-history vagrant rvm)
-
-source $ZSH/oh-my-zsh.sh
-source ~/.zsh/completions.zsh
-source ~/.zsh/keyboard.zsh
-source ~/.zsh/colors.zsh
 source ~/.zsh/aliases.zsh
-source ~/.zsh/functions.zsh
-source ~/.zsh/exports.zsh
-source ~/.zsh/setopt.zsh
-source ~/.zsh/misc.zsh
 
-#source ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+HIST_STAMPS="dd/mm/yyyy"
+setopt EXTENDED_HISTORY
+setopt HISTAPPEND
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt CORRECT
+setopt APPEND_HISTORY
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+export HISTCONTROL=ignoredups:erasedups
+export SAVEHIST=100000
+export HISTSIZE=100000
 
-# Customize to your needs...
-export PATH=~/bin:$(brew --prefix vim)/bin:$(brew --prefix josegonzalez/php/php54)/bin:/usr/local/share/npm/bin/:~/Library/Python/2.7/bin
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export ANDROID_SDK=/usr/local/Cellar/android-sdk/r22.3
-export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r22.3
-PATH=/usr/local/share/npm/bin/:$PATH
-PATH=/usr/local/share/python/:$PATH
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+# Now we can pipe to multiple outputs!
+setopt MULTIOS
+# This makes cd=pushd
+setopt AUTO_PUSHD
+# This will use named dirs when possible
+setopt AUTO_NAME_DIRS
+# blank pushd goes to home
+setopt PUSHD_TO_HOME
+# 10 second wait if you do something that will delete everything
+setopt RM_STAR_WAIT
+# Avoid the shell to exit when typing <C-d>
+setopt IGNORE_EOF
+# NO_CLOBBER prevents you from accidentally overwriting an existing file.
+setopt noclobber
+# it's like, space AND completion
+bindkey -M viins ' ' magic-space
+# accept autosuggestion
+bindkey '^ ' autosuggest-accept
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+typeset -A key
+
+key[Home]="\e[1~"
+key[End]="\e[4~"
+key[Insert]=${terminfo[kich1]}
+key[Delete]=${terminfo[kdch1]}
+key[Up]=${terminfo[kcuu1]}
+key[Down]=${terminfo[kcud1]}
+key[Left]=${terminfo[kcub1]}
+key[Right]=${terminfo[kcuf1]}
+key[PageUp]=${terminfo[kpp]}
+key[PageDown]=${terminfo[knp]}
+
+# setup key accordingly
+[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+
+# Page up
+bindkey "^[[5~" history-beginning-search-backward
+# Page down
+bindkey "^[[6~" history-beginning-search-forward
+
+bindkey '^r' history-beginning-search-backward
+export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
