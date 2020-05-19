@@ -1,26 +1,41 @@
 [core]
     editor = "vim"
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/bguery/.gitignore_global
+    excludesfile = /Users/bguery/.gitignore_global
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space,fix,cr-at-eol
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+    # Speed up commands involving untracked files such as `git status`.
+    # https://git-scm.com/docs/git-update-index#_untracked_cache
+    untrackedCache = true
 
 [user]
-	name = Boris Guéry
-	email = guery.b@gmail.com
-	signingkey = 034C6265
+    name = Boris Guéry
+    email = guery.b@gmail.com
+    signingkey = 034C6265
 
 [color]
     ui = auto
-  [color "branch"]
+[color "branch"]
     current = yellow reverse
     local   = yellow
     remote  = green
-  [color "diff"]
+[color "diff"]
     meta       = yellow bold
     frag       = magenta bold
     old        = red bold
     new        = green bold
     whitespace = red reverse
-  [color "status"]
+[color "status"]
     added     = yellow
     changed   = green
     untracked = cyan
@@ -28,37 +43,57 @@
 [diff]
     noprefix  = true
     wordRegex = .
+    renameLimit = 5000
+    # Detect copies as well as renames
+    renames = copies
 
 [alias]
+    aliases = "!git config -l | grep alias | cut -c 7-"
     logg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cr%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph --date-order
     all-yesterday = log --graph --all --since="day.before.yesterday.midnight" --until=midnight --author="$(git config user.name)" --oneline
-    st = status
+    amend = commit --amend
+    amendn = commit --amend --no-edit
+    st = status -sb
     ci = commit
     ap = add -p
     rp = reset -p
     cp = checkout -p
+    lp = log -p
     show-deleted = !sh -c 'git show $(git rev-list --max-count=1 --all -- $0)^:$0'
-    publish = push --set-upstream origin
+    c = checkout
+    cb = !git fetch && git checkout -b
+    dc = diff --cached
+    d = diff
+    lo = log --oneline
+    ff = "!git ls-files | grep -i"
+    show-default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    rh = !git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+    rb = !git fetch && git rebase origin/$(git show-default-branch)
+    publish = !echo git push -o merge_request.title="" -o merge_request.create -o merge_request.target=develop -o merge_request.remove_source_branch --set-upstream origin HEAD:$(git rev-parse --abbrev-ref HEAD)
+    amend-to = "!f() { SHA=`git rev-parse \"$1\"`; git commit --fixup \"$SHA\" && GIT_SEQUENCE_EDITOR=true git rebase --interactive --autosquash \"$SHA^\"; }; f"
+    remove-commit = !git rebase --onto $1^ $1
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+    prune-local = !sh -c 'git branch --merged | grep -v "^*" | xargs git branch -d'
+    contributors = shortlog --summary --numbered
 
 [status]
     submoduleSummary = true
 
 [push]
-    default = simple
+    # Default push should only push the current branch to its push target, regardless of its remote name
+    default = upstream
+
 [log]
     abbrevCommit = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
 [rerere]
-	enabled = true
+    enabled = true
 [gpg]
-	program = gpg2
+    program = gpg2
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
